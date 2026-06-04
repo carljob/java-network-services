@@ -1,10 +1,8 @@
-Documentación
-=============
+Documentación del proyecto
+==========================
 
-Carpeta destinada a la documentación del curso y recursos auxiliares.
+Carpeta `docs/` para notas, diagramas y capturas relacionadas con los ejercicios.
 
-Estructura recomendada:
-- `docs/` — documentos, guías y apuntes.
-- `docs/images/` — capturas, diagramas y esquemas.
+Estructura:
+- `docs/images/` — imágenes y capturas.
 
-Coloca en esta carpeta cualquier material adicional que ayude a las prácticas.
