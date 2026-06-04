@@ -19,3 +19,25 @@ render the page locally.
 ![img3.png](docs/images/img3.png)
 
 ![img4.png](docs/images/img4.png)
+
+Sockets TCP - Echo Client and Server
+
+Implementation of a basic client-server communication using TCP sockets.
+The server listens on port 35000 waiting for a client connection. Once
+connected, it reads each message sent by the client and responds with
+the prefix "Response: " followed by the original message. The client
+connects to the server, reads user input from the console and prints
+the server response. The connection closes when the user types "Bye."
+Both programs use PrintWriter and BufferedReader to send and receive
+messages through the socket streams.
+
+![img5.png](docs/images/img5.png)
+
+![img6.png](docs/images/img6.png)
+
+![img7.png](docs/images/img7.png)
+
+![img8.png](docs/images/img8.png)
+
+![img9.png](docs/images/img9.png)
+
