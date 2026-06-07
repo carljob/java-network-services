@@ -43,7 +43,18 @@ messages through the socket streams.
 
 
 
-![img.png](docs/images/img10.png)
+![img10.png](docs/images/img10.png)
 
-![img.png](docs/images/img11.png)
+![img11.png](docs/images/img11.png)
 
+Exercise 4.3.2 - Trigonometric Function Server
+
+Server that receives numbers and calculates trigonometric functions.
+By default calculates cosine. The active function can be changed by
+sending a message starting with "fun:" followed by the function name
+(sin, cos, tan). Regular messages are treated as numbers and the
+current function is applied to them.
+
+![img12.png](docs/images/img12.png)
+
+![img13.png](docs/images/img13.png)
