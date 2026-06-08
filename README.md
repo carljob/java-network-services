@@ -58,3 +58,7 @@ current function is applied to them.
 ![img12.png](docs/images/img12.png)
 
 ![img13.png](docs/images/img13.png)
+
+
+
+![img14.png](docs/images/img14.png)
