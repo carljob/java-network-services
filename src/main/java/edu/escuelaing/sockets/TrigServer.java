@@ -36,7 +36,7 @@ public class TrigServer {
                 new InputStreamReader(clientSocket.getInputStream()));
 
         String inputLine, outputLine;
-        String currentFunction = "cos"; // por defecto coseno
+        String currentFunction = "cos";
 
         while ((inputLine = in.readLine()) != null) {
             System.out.println("Received: " + inputLine);
