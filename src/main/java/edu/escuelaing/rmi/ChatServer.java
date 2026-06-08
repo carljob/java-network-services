@@ -9,7 +9,7 @@ import java.rmi.registry.Registry;
  */
 public class ChatServer {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         try {
             ChatServiceImpl chatService = new ChatServiceImpl();
 
@@ -17,6 +17,10 @@ public class ChatServer {
             registry.rebind("chatService", chatService);
 
             System.out.println("Chat server ready on port 23000...");
+
+            synchronized (ChatServer.class) {
+                ChatServer.class.wait();
+            }
 
         } catch (Exception e) {
             System.err.println("Server error:");
