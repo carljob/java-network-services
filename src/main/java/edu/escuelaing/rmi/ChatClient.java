@@ -6,8 +6,9 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
- * RMI Chat client that connects to the ChatServer,
- * sends messages and reads messages from other clients.
+ * Exercise 6.4.1 - RMI Chat client with real-time message updates.
+ * A background thread constantly checks for new messages while
+ * the user can type and send messages at the same time.
  */
 public class ChatClient {
 
@@ -25,27 +26,36 @@ public class ChatClient {
             ChatService chatService = (ChatService) registry.lookup("chatService");
 
             System.out.println("Connected! Type your messages. Type 'exit' to quit.");
-            System.out.println("Type 'read' to see all messages.");
+
+            Thread readerThread = new Thread(() -> {
+                int lastCount = 0;
+                while (true) {
+                    try {
+                        List<String> messages = chatService.getMessages();
+                        if (messages.size() > lastCount) {
+                            for (int i = lastCount; i < messages.size(); i++) {
+                                System.out.println(messages.get(i));
+                            }
+                            lastCount = messages.size();
+                        }
+                        Thread.sleep(1000); // revisa cada segundo
+                    } catch (Exception e) {
+                        System.out.println("Lost connection to server.");
+                        break;
+                    }
+                }
+            });
+
+            readerThread.setDaemon(true);
+            readerThread.start();
 
             String input;
             while (true) {
                 input = scanner.nextLine();
-
                 if (input.equals("exit")) break;
-
-                if (input.equals("read")) {
-                    List<String> messages = chatService.getMessages();
-                    System.out.println("--- Chat history ---");
-                    for (String msg : messages) {
-                        System.out.println(msg);
-                    }
-                    System.out.println("--------------------");
-                } else {
-                    chatService.sendMessage(user, input);
-                }
+                chatService.sendMessage(user, input);
             }
 
-            scanner.close();
             System.out.println("Disconnected.");
 
         } catch (Exception e) {
